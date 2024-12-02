@@ -101,4 +101,5 @@ function verifyNumber() {
       }, 1000);
     }
   }
+  document.getElementById("userInput").value = '';
 }
