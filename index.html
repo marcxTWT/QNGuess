@@ -5,10 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Number Guessing Game</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@300..800&display=swap" rel="stylesheet">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@300..800&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- Link to favicon -->
     <link rel="icon" href="./favicon-32x32.png" type="image/x-icon" />
 
@@ -19,83 +22,85 @@
     />
     <style>
       @media (max-width: 768px) {
-  /* For screens smaller than 768px (mobile) */
-  .container {
-    padding: 10px;
-  }
-}
+        /* For screens smaller than 768px (mobile) */
+        .container {
+          padding: 10px;
+        }
+      }
 
-@media (min-width: 769px) {
-  /* For screens larger than 768px (laptop/desktop) */
-  .container {
-    padding: 20px;
-  }
-}
+      @media (min-width: 769px) {
+        /* For screens larger than 768px (laptop/desktop) */
+        .container {
+          padding: 20px;
+        }
+      }
 
-/* Apply Parkinsans font to the entire body */
-body {
-  font-family: "Parkinsans", sans-serif;
-}
+      /* Apply Parkinsans font to the entire body */
+      body {
+        font-family: "Parkinsans", sans-serif;
+      }
 
-/* Apply font to specific elements */
-h1,
-h4,
-h6 {
-  font-family: "Parkinsans", sans-serif;
-}
+      /* Apply font to specific elements */
+      h1,
+      h4,
+      h6 {
+        font-family: "Parkinsans", sans-serif;
+      }
 
-/* Customize button and other elements if needed */
-.btn {
-  font-family: "Parkinsans", sans-serif;
-}
+      /* Customize button and other elements if needed */
+      .btn {
+        font-family: "Parkinsans", sans-serif;
+      }
 
-.background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url(./backiee-109636-landscape.jpg) no-repeat center center/cover;
-  filter: blur(8px); /* Adjust blur intensity */
-  z-index: -1; /* Place it behind content */
-}
+      .background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url(./backiee-109636-landscape.jpg) no-repeat center
+          center/cover;
+        filter: blur(8px); /* Adjust blur intensity */
+        z-index: -1; /* Place it behind content */
+      }
 
-#errorMessage {
-  color: red;
-  font-size: 14px;
-  margin-top: 10px;
-  animation: shake 0.3s;
-}
+      #errorMessage {
+        color: red;
+        font-size: 14px;
+        margin-top: 10px;
+        animation: shake 0.3s;
+      }
 
-.hidden {
-  display: none;
-}
+      .hidden {
+        display: none;
+      }
 
-/* Shake animation */
-@keyframes shake {
-  0%,
-  100% {
-    transform: translateX(0);
-  }
-  25% {
-    transform: translateX(-5px);
-  }
-  50% {
-    transform: translateX(5px);
-  }
-  75% {
-    transform: translateX(-5px);
-  }
-}
+      /* Shake animation */
+      @keyframes shake {
+        0%,
+        100% {
+          transform: translateX(0);
+        }
+        25% {
+          transform: translateX(-5px);
+        }
+        50% {
+          transform: translateX(5px);
+        }
+        75% {
+          transform: translateX(-5px);
+        }
+      }
     </style>
-    
   </head>
   <body>
     <!-- Background Section -->
     <div class="background"></div>
 
     <!-- Main container for centering the content -->
-    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div
+      class="container d-flex justify-content-center align-items-center min-vh-100"
+    >
       <div
         class="text-center p-5 bg-light border rounded shadow-lg"
         style="max-width: 400px; width: 100%; margin: 0 auto"
@@ -117,7 +122,11 @@ h6 {
           max="50"
           min="1"
         />
-        <button class="btn btn-primary mb-3" id="submitButton" onclick="verifyNumber()">
+        <button
+          class="btn btn-primary mb-3"
+          id="submitButton"
+          onclick="verifyNumber()"
+        >
           Submit Guess
         </button>
 
@@ -134,111 +143,110 @@ h6 {
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-          // Generate a random number between 1 and 50
-const randomNum = Math.floor(Math.random() * 50) + 1;
-let guessCount = 6;
+      // Generate a random number between 1 and 50
+      const randomNum = Math.floor(Math.random() * 50) + 1;
+      let guessCount = 6;
 
-document.addEventListener("keydown", function (event) {
-  if (event.key === "Enter") {
-    // Trigger the submit button click
-    const submitButton = document.getElementById("submitButton");
-    submitButton.click();
-  }
-});
-
-function verifyNumber() {
-  let userInput = document.getElementById("userInput").value.trim();
-  let errorMessage = document.getElementById("errorMessage");
-  let suggestion = document.getElementById("suggestion");
-  let result = document.getElementById("result");
-  let guessCountalert = document.getElementById("guessCountalert");
-
-  // Clear previous messages
-  errorMessage.classList.add("hidden");
-  suggestion.textContent = "";
-  result.textContent = "";
-  guessCountalert.textContent = "";
-
-  // Check if input is empty
-  if (!userInput) {
-    // Show error message with animation
-    errorMessage.textContent = "Enter a guess!";
-    errorMessage.classList.remove("hidden");
-    errorMessage.classList.add("shake");
-
-    // Remove animation class after it completes
-    setTimeout(() => {
-      errorMessage.classList.remove("shake");
-    }, 300);
-    return; // Stop further execution
-  }
-
-  const apUserInput = parseInt(userInput);
-
-  // Validate if the input is not a number or out of range
-  if (isNaN(apUserInput) || apUserInput < 1 || apUserInput > 50) {
-    errorMessage.textContent = "Please enter a number between 1 and 50!";
-    errorMessage.classList.remove("hidden");
-    return;
-  }
-
-  // Decrease the guess count
-  guessCount--;
-
-  // Check if the guess is correct
-  if (apUserInput === randomNum) {
-    result.textContent = "🎉 You win!!";
-    result.style.color = "green";
-
-    suggestion.textContent = "Reloading in 3 seconds...";
-    suggestion.style.color = "green";
-
-    let countdown = 3;
-    const interval = setInterval(() => {
-      suggestion.textContent = `Reloading in ${countdown} seconds...`;
-      countdown--;
-
-      if (countdown < 0) {
-        clearInterval(interval);
-        location.reload(); // Reload the page when countdown reaches 0
-      }
-    }, 1000);
-
-  } else {
-    // Provide hints for incorrect guesses
-    if (apUserInput < randomNum) {
-      suggestion.textContent = "Guess Higher";
-    } else {
-      suggestion.textContent = "Guess Lower";
-    }
-
-    // Update the guess count or end the game
-    if (guessCount > 0) {
-      guessCountalert.textContent = `Only ${guessCount} chances remaining.`;
-      guessCountalert.style.color = "red";
-    } else {
-      result.textContent = "You lost!";
-      result.style.color = "red";
-
-      suggestion.textContent = "Reloading in 3 seconds...";
-      suggestion.style.color = "red";
-
-      document.getElementById("userInput").disabled = true;
-
-      let countdown = 3;
-      const interval = setInterval(() => {
-        suggestion.textContent = `Reloading in ${countdown} seconds...`;
-        countdown--;
-
-        if (countdown < 0) {
-          clearInterval(interval);
-          location.reload(); // Reload the page when countdown reaches 0
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+          // Trigger the submit button click
+          const submitButton = document.getElementById("submitButton");
+          submitButton.click();
         }
-      }, 1000);
-    }
-  }
-  document.getElementById("userInput").value = '';
-}
+      });
+
+      function verifyNumber() {
+        let userInput = document.getElementById("userInput").value.trim();
+        let errorMessage = document.getElementById("errorMessage");
+        let suggestion = document.getElementById("suggestion");
+        let result = document.getElementById("result");
+        let guessCountalert = document.getElementById("guessCountalert");
+
+        // Clear previous messages
+        errorMessage.classList.add("hidden");
+        suggestion.textContent = "";
+        result.textContent = "";
+        guessCountalert.textContent = "";
+
+        // Check if input is empty
+        if (!userInput) {
+          // Show error message with animation
+          errorMessage.textContent = "Enter a guess!";
+          errorMessage.classList.remove("hidden");
+          errorMessage.classList.add("shake");
+
+          // Remove animation class after it completes
+          setTimeout(() => {
+            errorMessage.classList.remove("shake");
+          }, 300);
+          return; // Stop further execution
+        }
+
+        const apUserInput = parseInt(userInput);
+
+        // Validate if the input is not a number or out of range
+        if (isNaN(apUserInput) || apUserInput < 1 || apUserInput > 50) {
+          errorMessage.textContent = "Please enter a number between 1 and 50!";
+          errorMessage.classList.remove("hidden");
+          return;
+        }
+
+        // Decrease the guess count
+        guessCount--;
+
+        // Check if the guess is correct
+        if (apUserInput === randomNum) {
+          result.textContent = "🎉 You win!!";
+          result.style.color = "green";
+
+          suggestion.textContent = "Reloading in 3 seconds...";
+          suggestion.style.color = "green";
+
+          let countdown = 3;
+          const interval = setInterval(() => {
+            suggestion.textContent = `Reloading in ${countdown} seconds...`;
+            countdown--;
+
+            if (countdown < 0) {
+              clearInterval(interval);
+              location.reload(); // Reload the page when countdown reaches 0
+            }
+          }, 1000);
+        } else {
+          // Provide hints for incorrect guesses
+          if (apUserInput < randomNum) {
+            suggestion.textContent = "Guess Higher";
+          } else {
+            suggestion.textContent = "Guess Lower";
+          }
+
+          // Update the guess count or end the game
+          if (guessCount > 0) {
+            guessCountalert.textContent = `Only ${guessCount} chances remaining.`;
+            guessCountalert.style.color = "red";
+          } else {
+            result.textContent = "You lost!";
+            result.style.color = "red";
+
+            suggestion.textContent = "Reloading in 3 seconds...";
+            suggestion.style.color = "red";
+
+            document.getElementById("userInput").disabled = true;
+
+            let countdown = 3;
+            const interval = setInterval(() => {
+              suggestion.textContent = `Reloading in ${countdown} seconds...`;
+              countdown--;
+
+              if (countdown < 0) {
+                clearInterval(interval);
+                location.reload(); // Reload the page when countdown reaches 0
+              }
+            }, 1000);
+          }
+        }
+        document.getElementById("userInput").value = "";
+      }
     </script>
   </body>
 </html>
