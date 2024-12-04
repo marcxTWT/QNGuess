@@ -109,7 +109,7 @@
         <h1 class="mb-4 text-center">Number Guessing Game</h1>
         <p class="mb-4">
           We have selected a random number between 1 and 50. See if you can
-          guess it in 6 turns or fewer. We'll tell you if your guess was too
+          guess it in 5 turns or fewer. We'll tell you if your guess was too
           high or too low.
         </p>
 
@@ -145,7 +145,7 @@
     <script>
       // Generate a random number between 1 and 50
       const randomNum = Math.floor(Math.random() * 50) + 1;
-      let guessCount = 6;
+      let guessCount = 5;
 
       document.addEventListener("keydown", function (event) {
         if (event.key === "Enter") {
