@@ -1,0 +1,71 @@
+
+      @media (max-width: 768px) {
+        /* For screens smaller than 768px (mobile) */
+        .container {
+          padding: 10px;
+        }
+      }
+
+      @media (min-width: 769px) {
+        /* For screens larger than 768px (laptop/desktop) */
+        .container {
+          padding: 20px;
+        }
+      }
+
+      /* Apply Parkinsans font to the entire body */
+      body {
+        font-family: "Parkinsans", sans-serif;
+      }
+
+      /* Apply font to specific elements */
+      h1,
+      h4,
+      h6 {
+        font-family: "Parkinsans", sans-serif;
+      }
+
+      /* Customize button and other elements if needed */
+      .btn {
+        font-family: "Parkinsans", sans-serif;
+      }
+
+      .background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url(./backiee-109636-landscape.jpg) no-repeat center
+          center/cover;
+        filter: blur(8px); /* Adjust blur intensity */
+        z-index: -1; /* Place it behind content */
+      }
+
+      #errorMessage {
+        color: red;
+        font-size: 14px;
+        margin-top: 10px;
+        animation: shake 0.3s;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      /* Shake animation */
+      @keyframes shake {
+        0%,
+        100% {
+          transform: translateX(0);
+        }
+        25% {
+          transform: translateX(-5px);
+        }
+        50% {
+          transform: translateX(5px);
+        }
+        75% {
+          transform: translateX(-5px);
+        }
+      }
