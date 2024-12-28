@@ -83,7 +83,7 @@
             result.textContent = "You lost!";
             result.style.color = "red";
 
-            suggestion.textContent = "Reloading in 3 seconds...";
+            suggestion.textContent = `It was ${randomNum}`;
             suggestion.style.color = "red";
 
             document.getElementById("userInput").disabled = true;
