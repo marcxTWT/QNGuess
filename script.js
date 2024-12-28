@@ -84,7 +84,7 @@
             result.style.color = "red";
 
             suggestion.textContent = `It was ${randomNum}`;
-            suggestion.style.color = "red";
+            suggestion.style.color = "black";
 
             document.getElementById("userInput").disabled = true;
 
