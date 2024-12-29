@@ -54,12 +54,12 @@
           result.textContent = "🎉 You win!!";
           result.style.color = "green";
 
-          suggestion.textContent = "Reloading in 3 seconds...";
+          suggestion.textContent = "";
           suggestion.style.color = "green";
 
           let countdown = 3;
           const interval = setInterval(() => {
-            suggestion.textContent = `Reloading in ${countdown} seconds...`;
+            suggestion.textContent = `Reloading in ${countdown}`;
             countdown--;
 
             if (countdown < 0) {
@@ -90,7 +90,7 @@
 
             let countdown = 3;
             const interval = setInterval(() => {
-              suggestion.textContent = `Reloading in ${countdown} seconds...`;
+              suggestion.textContent = `Reloading in ${countdown}`;
               countdown--;
 
               if (countdown < 0) {
